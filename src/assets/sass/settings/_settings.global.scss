@@ -1,0 +1,19 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+
+// The global settings file contains any project-wide variables; things that
+// need to be made available to the entire codebase.
+
+
+
+// Standardise some UI treatments.
+
+$global-radius: 3px !default;
+$global-transition: all 300ms ease-in-out !default;
+
+$base-colour: #02040f;
+$highlight-colour: #e5dada;
+$accent-colour: #246a73;
+$brand-colour: #002642;
+$link-colour: #e59500;

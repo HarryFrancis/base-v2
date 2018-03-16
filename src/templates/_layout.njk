@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Base.v2</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="{{ pageTitle | replace(' ', '-') | lower }}">
+
+    {% block content %}{% endblock %}
+
+    <script src="/assets/js/global.js"></script>
+</body>
+</html>

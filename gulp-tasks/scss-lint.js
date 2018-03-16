@@ -11,6 +11,7 @@ module.exports = function () {
     return gulp.src(global.paths.src.sass.site)
         .pipe(plumber())
         .pipe(scsslint({
-            'maxBuffer': 30007200
+            'maxBuffer': 30007200,
+            'config': 'scss-lint.yml'
         }));
 };
