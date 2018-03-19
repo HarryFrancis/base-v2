@@ -22,6 +22,6 @@
 
 ___
 
-Author: Harry Francis (harryad3@gmail.com)
+Author: [Harry Francis](harryad3@gmail.com)
 
 Version: 2.0.0
