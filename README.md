@@ -19,9 +19,8 @@
 
 ### Markup
 - [Nunjucks](https://mozilla.github.io/nunjucks/)
-
 ___
 
-Author: [Harry Francis](harryad3@gmail.com)
+Author: [Harry Francis](me@harryf.uk)
 
 Version: 2.0.0
