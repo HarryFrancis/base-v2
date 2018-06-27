@@ -1,3 +1,3 @@
 function iAmAFunction() {
-	console.log('JS systems are go');
+	console.log('JS systems are go!');
 }

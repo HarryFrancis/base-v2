@@ -8,8 +8,7 @@ var clean = require('del');
 module.exports = function () {
 
     return clean([
-        global.paths.dest.markup,
-        !global.paths.dest.css,
-        !global.paths.dest.js,
+        global.paths.dest.root,
+        !global.paths.dest.assets + '**/*',
     ]);
 };

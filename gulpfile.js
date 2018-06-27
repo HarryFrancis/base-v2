@@ -6,9 +6,6 @@ var dest = require('gulp-dest');
 // Define paths
 var paths = {
     src: {
-        browsersync: [
-            'src/assets/sass/**/*.scss'
-        ],
         sass: {
             site: [
                 'src/assets/sass/**/*.scss',
@@ -20,28 +17,37 @@ var paths = {
                 'src/assets/js/init.js',
             ],
             vendorHead: [
-                'src/assets/js/vendor/modernizr-custom.js',
-                'src/assets/js/vendor/respond.min.js',
+                'src/assets/js/vendor/head/*.js',
             ],
             vendorFoot: [
-                'src/assets/js/vendor/console.js',
+                'src/assets/js/vendor/foot/*.js',
             ],
         },
         markup: {
             input: [
                 'src/templates/**/*.njk',
                 '!src/templates/**/_*.njk',
-                '!src/templates/components',
             ],
             inputWatch: [
                 'src/templates/**/*.njk',
             ],
         },
+        fonts: 'src/assets/fonts/**/*',
+        images: 'src/assets/images/**/*',
+        icons: 'src/assets/icons/**/*',
+        fontsDir: 'src/assets/fonts/',
+        imagesDir: 'src/assets/images/',
+        iconsDirRetina: 'src/assets/icons/*@2x.png',
+        iconsDir: 'src/assets/icons/',
     },
     dest: {
+        images: 'public/assets/images/',
+        fonts: 'public/assets/fonts/',
+        icons: 'public/assets/icons/',
         css: 'public/assets/css/',
         js: 'public/assets/js/',
-        markup: 'public'
+        assets: 'public/assets/',
+        root: 'public',
     },
 };
 
@@ -55,18 +61,22 @@ Object.keys(tasks).forEach(function (name) {
 
 gulp.task('css', ['clean-css', 'scss-lint', 'build-sass']);
 gulp.task('js', ['clean-js', 'jshint', 'build-scripts-site', 'build-scripts-vendor-head', 'build-scripts-vendor-foot']);
-gulp.task('templates', ['clean-markup', 'nunjucks']);
+gulp.task('templates', ['nunjucks']); // To add - Get clean working
+gulp.task('other', ['fonts', 'images', 'icons']);
 
-gulp.task('build', ['clean'], function () {
-    gulp.start('css', 'js', 'build-scripts-vendor-head', 'build-scripts-vendor-foot', 'nunjucks');
+gulp.task('build', ['clean', 'other'], function () {
+    gulp.start('css', 'js', 'templates', 'browser-sync');
 });
 
 gulp.task('watch', ['build'], function () {
+    gulp.watch(paths.src.markup.inputWatch, ['templates']);
+    gulp.watch(paths.src.fonts, ['fonts']);
+    gulp.watch(paths.src.icons, ['icons']);
+    gulp.watch(paths.src.images, ['images']);
     gulp.watch(paths.src.sass.site, ['css']);
     gulp.watch(paths.src.js.site, ['js']);
     gulp.watch(paths.src.js.vendorHead, ['build-scripts-vendor-head']);
     gulp.watch(paths.src.js.vendorFoot, ['build-scripts-vendor-foot']);
-    gulp.watch(paths.src.markup.inputWatch, ['nunjucks']);
 });
 
 // Set the default task when you run gulp, first clean, then normal functions
